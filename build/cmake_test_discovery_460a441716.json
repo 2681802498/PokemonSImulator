@@ -1,0 +1,920 @@
+{
+  "tests": 172,
+  "name": "AllTests",
+  "testsuites": [
+    {
+      "name": "MoveDataTest",
+      "tests": 3,
+      "testsuite": [
+        {
+          "name": "ProtectMoveLoadedWithExpectedEffect",
+          "file": "\/Users\/why\/Documents\/goLang\/pokemonCppServer\/src\/simulator\/tests\/battle_data_test.cpp",
+          "line": 139
+        },
+        {
+          "name": "QuickAttackLoadedWithPriorityAndTarget",
+          "file": "\/Users\/why\/Documents\/goLang\/pokemonCppServer\/src\/simulator\/tests\/battle_data_test.cpp",
+          "line": 146
+        },
+        {
+          "name": "DragonDanceLoadedWithSelfTarget",
+          "file": "\/Users\/why\/Documents\/goLang\/pokemonCppServer\/src\/simulator\/tests\/battle_data_test.cpp",
+          "line": 156
+        }
+      ]
+    },
+    {
+      "name": "AbilityDataTest",
+      "tests": 10,
+      "testsuite": [
+        {
+          "name": "BlazeNameMapsToBlazeType",
+          "file": "\/Users\/why\/Documents\/goLang\/pokemonCppServer\/src\/simulator\/tests\/battle_data_test.cpp",
+          "line": 166
+        },
+        {
+          "name": "AbilityFactoryUsesCanonicalAbilityData",
+          "file": "\/Users\/why\/Documents\/goLang\/pokemonCppServer\/src\/simulator\/tests\/battle_data_test.cpp",
+          "line": 172
+        },
+        {
+          "name": "AbilityFactoryPopulatesImmunityMetadata",
+          "file": "\/Users\/why\/Documents\/goLang\/pokemonCppServer\/src\/simulator\/tests\/battle_data_test.cpp",
+          "line": 181
+        },
+        {
+          "name": "AbilityFactoryPopulatesModifierAndTriggerMetadata",
+          "file": "\/Users\/why\/Documents\/goLang\/pokemonCppServer\/src\/simulator\/tests\/battle_data_test.cpp",
+          "line": 203
+        },
+        {
+          "name": "AbilityFactoryPopulatesEntryAndExitTriggers",
+          "file": "\/Users\/why\/Documents\/goLang\/pokemonCppServer\/src\/simulator\/tests\/battle_data_test.cpp",
+          "line": 223
+        },
+        {
+          "name": "EntryAndExitAbilityTriggersMutateBattleState",
+          "file": "\/Users\/why\/Documents\/goLang\/pokemonCppServer\/src\/simulator\/tests\/battle_data_test.cpp",
+          "line": 237
+        },
+        {
+          "name": "ResolveTypeImmunityUsesAbilityDefinition",
+          "file": "\/Users\/why\/Documents\/goLang\/pokemonCppServer\/src\/simulator\/tests\/battle_data_test.cpp",
+          "line": 272
+        },
+        {
+          "name": "ResolveStatusImmunityUsesAbilityDefinition",
+          "file": "\/Users\/why\/Documents\/goLang\/pokemonCppServer\/src\/simulator\/tests\/battle_data_test.cpp",
+          "line": 287
+        },
+        {
+          "name": "AbilityFlagHelpersExposeBattleRoutingRules",
+          "file": "\/Users\/why\/Documents\/goLang\/pokemonCppServer\/src\/simulator\/tests\/battle_data_test.cpp",
+          "line": 297
+        },
+        {
+          "name": "ApplyTypeImmunityBonusUsesAbilityDefinition",
+          "file": "\/Users\/why\/Documents\/goLang\/pokemonCppServer\/src\/simulator\/tests\/battle_data_test.cpp",
+          "line": 356
+        }
+      ]
+    },
+    {
+      "name": "BuildFromJsonTest",
+      "tests": 2,
+      "testsuite": [
+        {
+          "name": "CharizardBuildHasFourMoves",
+          "file": "\/Users\/why\/Documents\/goLang\/pokemonCppServer\/src\/simulator\/tests\/battle_data_test.cpp",
+          "line": 374
+        },
+        {
+          "name": "SelfContainedPokemonJsonLoadsPokemonInstance",
+          "file": "\/Users\/why\/Documents\/goLang\/pokemonCppServer\/src\/simulator\/tests\/battle_data_test.cpp",
+          "line": 379
+        }
+      ]
+    },
+    {
+      "name": "BattleLogicTest",
+      "tests": 5,
+      "testsuite": [
+        {
+          "name": "ToxicPoisonEffectApplied",
+          "file": "\/Users\/why\/Documents\/goLang\/pokemonCppServer\/src\/simulator\/tests\/battle_data_test.cpp",
+          "line": 430
+        },
+        {
+          "name": "IntimidateLowersOpponentAttackStageOnEntry",
+          "file": "\/Users\/why\/Documents\/goLang\/pokemonCppServer\/src\/simulator\/tests\/battle_data_test.cpp",
+          "line": 451
+        },
+        {
+          "name": "MovePriorityOutranksSpeedInQueue",
+          "file": "\/Users\/why\/Documents\/goLang\/pokemonCppServer\/src\/simulator\/tests\/battle_data_test.cpp",
+          "line": 471
+        },
+        {
+          "name": "QueueTieUsesInsertionOrderForDeterminism",
+          "file": "\/Users\/why\/Documents\/goLang\/pokemonCppServer\/src\/simulator\/tests\/battle_data_test.cpp",
+          "line": 496
+        },
+        {
+          "name": "DragonDanceRaisesAttackAndSpeed",
+          "file": "\/Users\/why\/Documents\/goLang\/pokemonCppServer\/src\/simulator\/tests\/battle_data_test.cpp",
+          "line": 517
+        }
+      ]
+    },
+    {
+      "name": "AbilityBehaviorTest",
+      "tests": 69,
+      "testsuite": [
+        {
+          "name": "InsomniaBlocksSleepStatus",
+          "file": "\/Users\/why\/Documents\/goLang\/pokemonCppServer\/src\/simulator\/tests\/battle_data_test.cpp",
+          "line": 542
+        },
+        {
+          "name": "GutsBoostsPhysicalDamageWhileStatused",
+          "file": "\/Users\/why\/Documents\/goLang\/pokemonCppServer\/src\/simulator\/tests\/battle_data_test.cpp",
+          "line": 562
+        },
+        {
+          "name": "HugePowerBoostsPhysicalDamage",
+          "file": "\/Users\/why\/Documents\/goLang\/pokemonCppServer\/src\/simulator\/tests\/battle_data_test.cpp",
+          "line": 596
+        },
+        {
+          "name": "ThickFatReducesFireDamage",
+          "file": "\/Users\/why\/Documents\/goLang\/pokemonCppServer\/src\/simulator\/tests\/battle_data_test.cpp",
+          "line": 629
+        },
+        {
+          "name": "SapSipperAbsorbsGrassAndRaisesAttack",
+          "file": "\/Users\/why\/Documents\/goLang\/pokemonCppServer\/src\/simulator\/tests\/battle_data_test.cpp",
+          "line": 663
+        },
+        {
+          "name": "TechnicianBoostsLowPowerMoves",
+          "file": "\/Users\/why\/Documents\/goLang\/pokemonCppServer\/src\/simulator\/tests\/battle_data_test.cpp",
+          "line": 689
+        },
+        {
+          "name": "FilterReducesSuperEffectiveDamage",
+          "file": "\/Users\/why\/Documents\/goLang\/pokemonCppServer\/src\/simulator\/tests\/battle_data_test.cpp",
+          "line": 722
+        },
+        {
+          "name": "SolidRockReducesSuperEffectiveDamage",
+          "file": "\/Users\/why\/Documents\/goLang\/pokemonCppServer\/src\/simulator\/tests\/battle_data_test.cpp",
+          "line": 756
+        },
+        {
+          "name": "MoxieRaisesAttackAfterKnockout",
+          "file": "\/Users\/why\/Documents\/goLang\/pokemonCppServer\/src\/simulator\/tests\/battle_data_test.cpp",
+          "line": 790
+        },
+        {
+          "name": "InnerFocusBlocksFlinch",
+          "file": "\/Users\/why\/Documents\/goLang\/pokemonCppServer\/src\/simulator\/tests\/battle_data_test.cpp",
+          "line": 815
+        },
+        {
+          "name": "RegeneratorHealsOnSwitchOut",
+          "file": "\/Users\/why\/Documents\/goLang\/pokemonCppServer\/src\/simulator\/tests\/battle_data_test.cpp",
+          "line": 834
+        },
+        {
+          "name": "NaturalCureClearsStatusOnSwitchOut",
+          "file": "\/Users\/why\/Documents\/goLang\/pokemonCppServer\/src\/simulator\/tests\/battle_data_test.cpp",
+          "line": 860
+        },
+        {
+          "name": "MagicGuardPreventsWeatherChipDamage",
+          "file": "\/Users\/why\/Documents\/goLang\/pokemonCppServer\/src\/simulator\/tests\/battle_data_test.cpp",
+          "line": 885
+        },
+        {
+          "name": "UnawareDefenderIgnoresAttackerBoosts",
+          "file": "\/Users\/why\/Documents\/goLang\/pokemonCppServer\/src\/simulator\/tests\/battle_data_test.cpp",
+          "line": 908
+        },
+        {
+          "name": "UnawareAttackerIgnoresDefenderBoosts",
+          "file": "\/Users\/why\/Documents\/goLang\/pokemonCppServer\/src\/simulator\/tests\/battle_data_test.cpp",
+          "line": 934
+        },
+        {
+          "name": "PranksterGivesPriorityToStatusMoves",
+          "file": "\/Users\/why\/Documents\/goLang\/pokemonCppServer\/src\/simulator\/tests\/battle_data_test.cpp",
+          "line": 968
+        },
+        {
+          "name": "ClearBodyBlocksIntimidateAttackDrop",
+          "file": "\/Users\/why\/Documents\/goLang\/pokemonCppServer\/src\/simulator\/tests\/battle_data_test.cpp",
+          "line": 995
+        },
+        {
+          "name": "DefiantTriggersOnIntimidate",
+          "file": "\/Users\/why\/Documents\/goLang\/pokemonCppServer\/src\/simulator\/tests\/battle_data_test.cpp",
+          "line": 1012
+        },
+        {
+          "name": "CompetitiveTriggersOnIntimidate",
+          "file": "\/Users\/why\/Documents\/goLang\/pokemonCppServer\/src\/simulator\/tests\/battle_data_test.cpp",
+          "line": 1029
+        },
+        {
+          "name": "DefiantTriggersOnStatLoweringMoveEffect",
+          "file": "\/Users\/why\/Documents\/goLang\/pokemonCppServer\/src\/simulator\/tests\/battle_data_test.cpp",
+          "line": 1047
+        },
+        {
+          "name": "WhiteSmokeBlocksIntimidateAttackDrop",
+          "file": "\/Users\/why\/Documents\/goLang\/pokemonCppServer\/src\/simulator\/tests\/battle_data_test.cpp",
+          "line": 1066
+        },
+        {
+          "name": "HyperCutterBlocksIntimidateAttackDrop",
+          "file": "\/Users\/why\/Documents\/goLang\/pokemonCppServer\/src\/simulator\/tests\/battle_data_test.cpp",
+          "line": 1083
+        },
+        {
+          "name": "MirrorArmorReflectsIntimidateAttackDrop",
+          "file": "\/Users\/why\/Documents\/goLang\/pokemonCppServer\/src\/simulator\/tests\/battle_data_test.cpp",
+          "line": 1100
+        },
+        {
+          "name": "KeenEyeBlocksSandAttackStyleEvasionRule",
+          "file": "\/Users\/why\/Documents\/goLang\/pokemonCppServer\/src\/simulator\/tests\/battle_data_test.cpp",
+          "line": 1118
+        },
+        {
+          "name": "DrizzleSetsRainOnEntry",
+          "file": "\/Users\/why\/Documents\/goLang\/pokemonCppServer\/src\/simulator\/tests\/battle_data_test.cpp",
+          "line": 1139
+        },
+        {
+          "name": "DroughtSetsSunOnEntry",
+          "file": "\/Users\/why\/Documents\/goLang\/pokemonCppServer\/src\/simulator\/tests\/battle_data_test.cpp",
+          "line": 1156
+        },
+        {
+          "name": "SandStreamSetsSandstormOnEntry",
+          "file": "\/Users\/why\/Documents\/goLang\/pokemonCppServer\/src\/simulator\/tests\/battle_data_test.cpp",
+          "line": 1173
+        },
+        {
+          "name": "SnowWarningSetsSnowOnEntry",
+          "file": "\/Users\/why\/Documents\/goLang\/pokemonCppServer\/src\/simulator\/tests\/battle_data_test.cpp",
+          "line": 1190
+        },
+        {
+          "name": "CloudNineSuppressesWeatherChipAndWeatherBallBoost",
+          "file": "\/Users\/why\/Documents\/goLang\/pokemonCppServer\/src\/simulator\/tests\/battle_data_test.cpp",
+          "line": 1207
+        },
+        {
+          "name": "GrassySurgeSetsGrassyTerrainOnEntry",
+          "file": "\/Users\/why\/Documents\/goLang\/pokemonCppServer\/src\/simulator\/tests\/battle_data_test.cpp",
+          "line": 1248
+        },
+        {
+          "name": "ElectricSurgeSetsElectricTerrainOnEntry",
+          "file": "\/Users\/why\/Documents\/goLang\/pokemonCppServer\/src\/simulator\/tests\/battle_data_test.cpp",
+          "line": 1265
+        },
+        {
+          "name": "PsychicSurgeSetsPsychicTerrainOnEntry",
+          "file": "\/Users\/why\/Documents\/goLang\/pokemonCppServer\/src\/simulator\/tests\/battle_data_test.cpp",
+          "line": 1282
+        },
+        {
+          "name": "MistySurgeSetsMistyTerrainOnEntry",
+          "file": "\/Users\/why\/Documents\/goLang\/pokemonCppServer\/src\/simulator\/tests\/battle_data_test.cpp",
+          "line": 1299
+        },
+        {
+          "name": "HadronEngineSetsElectricTerrainAndBoostsSpecialDamage",
+          "file": "\/Users\/why\/Documents\/goLang\/pokemonCppServer\/src\/simulator\/tests\/battle_data_test.cpp",
+          "line": 1316
+        },
+        {
+          "name": "ProteanChangesUsersTypeWhenAttacking",
+          "file": "\/Users\/why\/Documents\/goLang\/pokemonCppServer\/src\/simulator\/tests\/battle_data_test.cpp",
+          "line": 1353
+        },
+        {
+          "name": "LiberoChangesUsersTypeWhenAttacking",
+          "file": "\/Users\/why\/Documents\/goLang\/pokemonCppServer\/src\/simulator\/tests\/battle_data_test.cpp",
+          "line": 1376
+        },
+        {
+          "name": "AdaptabilityBoostsStabDamage",
+          "file": "\/Users\/why\/Documents\/goLang\/pokemonCppServer\/src\/simulator\/tests\/battle_data_test.cpp",
+          "line": 1399
+        },
+        {
+          "name": "SheerForceBoostsDamageAndSuppressesSecondaryEffect",
+          "file": "\/Users\/why\/Documents\/goLang\/pokemonCppServer\/src\/simulator\/tests\/battle_data_test.cpp",
+          "line": 1431
+        },
+        {
+          "name": "InfiltratorBypassesSubstituteForDamage",
+          "file": "\/Users\/why\/Documents\/goLang\/pokemonCppServer\/src\/simulator\/tests\/battle_data_test.cpp",
+          "line": 1467
+        },
+        {
+          "name": "BeadsOfRuinLowersOpponentsSpecialDefenseForDamage",
+          "file": "\/Users\/why\/Documents\/goLang\/pokemonCppServer\/src\/simulator\/tests\/battle_data_test.cpp",
+          "line": 1493
+        },
+        {
+          "name": "SwordOfRuinLowersOpponentsDefenseForDamage",
+          "file": "\/Users\/why\/Documents\/goLang\/pokemonCppServer\/src\/simulator\/tests\/battle_data_test.cpp",
+          "line": 1533
+        },
+        {
+          "name": "TabletsOfRuinLowersOpponentsPhysicalAttackForDamage",
+          "file": "\/Users\/why\/Documents\/goLang\/pokemonCppServer\/src\/simulator\/tests\/battle_data_test.cpp",
+          "line": 1573
+        },
+        {
+          "name": "VesselOfRuinLowersOpponentsSpecialAttackForDamage",
+          "file": "\/Users\/why\/Documents\/goLang\/pokemonCppServer\/src\/simulator\/tests\/battle_data_test.cpp",
+          "line": 1613
+        },
+        {
+          "name": "UnnerveBlocksBerryConsumption",
+          "file": "\/Users\/why\/Documents\/goLang\/pokemonCppServer\/src\/simulator\/tests\/battle_data_test.cpp",
+          "line": 1653
+        },
+        {
+          "name": "ImmunityBlocksPoisonMoves",
+          "file": "\/Users\/why\/Documents\/goLang\/pokemonCppServer\/src\/simulator\/tests\/battle_data_test.cpp",
+          "line": 1676
+        },
+        {
+          "name": "StaticRespectsParalysisImmunityRouting",
+          "file": "\/Users\/why\/Documents\/goLang\/pokemonCppServer\/src\/simulator\/tests\/battle_data_test.cpp",
+          "line": 1697
+        },
+        {
+          "name": "RoughSkinDealsContactChipToAttacker",
+          "file": "\/Users\/why\/Documents\/goLang\/pokemonCppServer\/src\/simulator\/tests\/battle_data_test.cpp",
+          "line": 1717
+        },
+        {
+          "name": "IronBarbsDealsContactChipToAttacker",
+          "file": "\/Users\/why\/Documents\/goLang\/pokemonCppServer\/src\/simulator\/tests\/battle_data_test.cpp",
+          "line": 1742
+        },
+        {
+          "name": "FlameBodyCanBurnContactAttacker",
+          "file": "\/Users\/why\/Documents\/goLang\/pokemonCppServer\/src\/simulator\/tests\/battle_data_test.cpp",
+          "line": 1767
+        },
+        {
+          "name": "PoisonPointCanPoisonContactAttacker",
+          "file": "\/Users\/why\/Documents\/goLang\/pokemonCppServer\/src\/simulator\/tests\/battle_data_test.cpp",
+          "line": 1795
+        },
+        {
+          "name": "AftermathDamagesContactAttackerOnHolderFaint",
+          "file": "\/Users\/why\/Documents\/goLang\/pokemonCppServer\/src\/simulator\/tests\/battle_data_test.cpp",
+          "line": 1823
+        },
+        {
+          "name": "MummyReplacesContactAttackerAbility",
+          "file": "\/Users\/why\/Documents\/goLang\/pokemonCppServer\/src\/simulator\/tests\/battle_data_test.cpp",
+          "line": 1850
+        },
+        {
+          "name": "EarthEaterAbsorbsGroundAndHeals",
+          "file": "\/Users\/why\/Documents\/goLang\/pokemonCppServer\/src\/simulator\/tests\/battle_data_test.cpp",
+          "line": 1874
+        },
+        {
+          "name": "SharpnessBoostsSlicingMovePower",
+          "file": "\/Users\/why\/Documents\/goLang\/pokemonCppServer\/src\/simulator\/tests\/battle_data_test.cpp",
+          "line": 1899
+        },
+        {
+          "name": "PurifyingSaltBlocksMajorStatusAndHalvesGhostDamage",
+          "file": "\/Users\/why\/Documents\/goLang\/pokemonCppServer\/src\/simulator\/tests\/battle_data_test.cpp",
+          "line": 1933
+        },
+        {
+          "name": "WellBakedBodyAbsorbsFireAndBoostsDefense",
+          "file": "\/Users\/why\/Documents\/goLang\/pokemonCppServer\/src\/simulator\/tests\/battle_data_test.cpp",
+          "line": 1971
+        },
+        {
+          "name": "WindRiderBlocksWindMovesAndBoostsAttack",
+          "file": "\/Users\/why\/Documents\/goLang\/pokemonCppServer\/src\/simulator\/tests\/battle_data_test.cpp",
+          "line": 1997
+        },
+        {
+          "name": "ToxicDebrisSetsToxicSpikesWhenHitByPhysicalMove",
+          "file": "\/Users\/why\/Documents\/goLang\/pokemonCppServer\/src\/simulator\/tests\/battle_data_test.cpp",
+          "line": 2023
+        },
+        {
+          "name": "LingeringAromaReplacesContactAttackerAbility",
+          "file": "\/Users\/why\/Documents\/goLang\/pokemonCppServer\/src\/simulator\/tests\/battle_data_test.cpp",
+          "line": 2048
+        },
+        {
+          "name": "ArmorTailBlocksPriorityMovesAgainstHolder",
+          "file": "\/Users\/why\/Documents\/goLang\/pokemonCppServer\/src\/simulator\/tests\/battle_data_test.cpp",
+          "line": 2072
+        },
+        {
+          "name": "GoodAsGoldBlocksOpposingStatusMoves",
+          "file": "\/Users\/why\/Documents\/goLang\/pokemonCppServer\/src\/simulator\/tests\/battle_data_test.cpp",
+          "line": 2103
+        },
+        {
+          "name": "StakeoutBoostsDamageAgainstFreshSwitchInTarget",
+          "file": "\/Users\/why\/Documents\/goLang\/pokemonCppServer\/src\/simulator\/tests\/battle_data_test.cpp",
+          "line": 2127
+        },
+        {
+          "name": "SupremeOverlordBoostScalesWithFaintedAllies",
+          "file": "\/Users\/why\/Documents\/goLang\/pokemonCppServer\/src\/simulator\/tests\/battle_data_test.cpp",
+          "line": 2161
+        },
+        {
+          "name": "ProtosynthesisBoostsStrongestAttackStatInSun",
+          "file": "\/Users\/why\/Documents\/goLang\/pokemonCppServer\/src\/simulator\/tests\/battle_data_test.cpp",
+          "line": 2197
+        },
+        {
+          "name": "QuarkDriveBoostsStrongestDefenseStatOnElectricTerrain",
+          "file": "\/Users\/why\/Documents\/goLang\/pokemonCppServer\/src\/simulator\/tests\/battle_data_test.cpp",
+          "line": 2227
+        },
+        {
+          "name": "CudChewReplaysBerryAtEndOfNextTurn",
+          "file": "\/Users\/why\/Documents\/goLang\/pokemonCppServer\/src\/simulator\/tests\/battle_data_test.cpp",
+          "line": 2257
+        },
+        {
+          "name": "MoldBreakerBypassesWindRiderImmunity",
+          "file": "\/Users\/why\/Documents\/goLang\/pokemonCppServer\/src\/simulator\/tests\/battle_data_test.cpp",
+          "line": 2291
+        },
+        {
+          "name": "MoldBreakerBypassesGoodAsGoldStatusBlock",
+          "file": "\/Users\/why\/Documents\/goLang\/pokemonCppServer\/src\/simulator\/tests\/battle_data_test.cpp",
+          "line": 2327
+        },
+        {
+          "name": "ImmunityBlocksToxicSpikesPoisonOnSwitchIn",
+          "file": "\/Users\/why\/Documents\/goLang\/pokemonCppServer\/src\/simulator\/tests\/battle_data_test.cpp",
+          "line": 2351
+        }
+      ]
+    },
+    {
+      "name": "MoveBehaviorTest",
+      "tests": 73,
+      "testsuite": [
+        {
+          "name": "TrickRoomSetsFieldAndReversesQueueOrder",
+          "file": "\/Users\/why\/Documents\/goLang\/pokemonCppServer\/src\/simulator\/tests\/battle_data_test.cpp",
+          "line": 2376
+        },
+        {
+          "name": "HeavySlamUsesWeightScalingForDamage",
+          "file": "\/Users\/why\/Documents\/goLang\/pokemonCppServer\/src\/simulator\/tests\/battle_data_test.cpp",
+          "line": 2409
+        },
+        {
+          "name": "UturnSwitchesOutAfterDamage",
+          "file": "\/Users\/why\/Documents\/goLang\/pokemonCppServer\/src\/simulator\/tests\/battle_data_test.cpp",
+          "line": 2440
+        },
+        {
+          "name": "BatonPassTransfersStatStagesToSwitchInPokemon",
+          "file": "\/Users\/why\/Documents\/goLang\/pokemonCppServer\/src\/simulator\/tests\/battle_data_test.cpp",
+          "line": 2465
+        },
+        {
+          "name": "WhirlwindAndRoarForceTargetSwitchAndRespectSubstitute",
+          "file": "\/Users\/why\/Documents\/goLang\/pokemonCppServer\/src\/simulator\/tests\/battle_data_test.cpp",
+          "line": 2496
+        },
+        {
+          "name": "WhirlwindDoesNothingWithoutBench",
+          "file": "\/Users\/why\/Documents\/goLang\/pokemonCppServer\/src\/simulator\/tests\/battle_data_test.cpp",
+          "line": 2539
+        },
+        {
+          "name": "DragonTailAndCircleThrowForceSwitchAfterDamage",
+          "file": "\/Users\/why\/Documents\/goLang\/pokemonCppServer\/src\/simulator\/tests\/battle_data_test.cpp",
+          "line": 2559
+        },
+        {
+          "name": "ForcedSwitchMovesRespectSubstituteAndIngrain",
+          "file": "\/Users\/why\/Documents\/goLang\/pokemonCppServer\/src\/simulator\/tests\/battle_data_test.cpp",
+          "line": 2597
+        },
+        {
+          "name": "SupersonicAndConfuseRayApplyConfusionAndRespectSubstitute",
+          "file": "\/Users\/why\/Documents\/goLang\/pokemonCppServer\/src\/simulator\/tests\/battle_data_test.cpp",
+          "line": 2625
+        },
+        {
+          "name": "MimicCopiesTargetsLastUsedMoveIntoMimicSlot",
+          "file": "\/Users\/why\/Documents\/goLang\/pokemonCppServer\/src\/simulator\/tests\/battle_data_test.cpp",
+          "line": 2661
+        },
+        {
+          "name": "TrickRolePlayAndSkillSwapApplyExpectedEffects",
+          "file": "\/Users\/why\/Documents\/goLang\/pokemonCppServer\/src\/simulator\/tests\/battle_data_test.cpp",
+          "line": 2695
+        },
+        {
+          "name": "TransformCopiesTypesAndMovesAndSketchCopiesLastUsedMove",
+          "file": "\/Users\/why\/Documents\/goLang\/pokemonCppServer\/src\/simulator\/tests\/battle_data_test.cpp",
+          "line": 2752
+        },
+        {
+          "name": "ForesightOdorSleuthAndMiracleEyeEnablePreviouslyImmuneDamage",
+          "file": "\/Users\/why\/Documents\/goLang\/pokemonCppServer\/src\/simulator\/tests\/battle_data_test.cpp",
+          "line": 2809
+        },
+        {
+          "name": "DisableBlocksTargetsLastUsedMoveAndMistBlocksStatDrops",
+          "file": "\/Users\/why\/Documents\/goLang\/pokemonCppServer\/src\/simulator\/tests\/battle_data_test.cpp",
+          "line": 2870
+        },
+        {
+          "name": "DoubleTeamMinimizeAndSplashUpdateEvasionAndDoNothingElse",
+          "file": "\/Users\/why\/Documents\/goLang\/pokemonCppServer\/src\/simulator\/tests\/battle_data_test.cpp",
+          "line": 2909
+        },
+        {
+          "name": "TeleportSwitchesUserToNextBenchPokemon",
+          "file": "\/Users\/why\/Documents\/goLang\/pokemonCppServer\/src\/simulator\/tests\/battle_data_test.cpp",
+          "line": 2938
+        },
+        {
+          "name": "KinesisSweetScentAndPainSplitApplyExpectedEffects",
+          "file": "\/Users\/why\/Documents\/goLang\/pokemonCppServer\/src\/simulator\/tests\/battle_data_test.cpp",
+          "line": 2960
+        },
+        {
+          "name": "RecoveryVariantsAndFocusEnergyMetronomeMirrorMoveWork",
+          "file": "\/Users\/why\/Documents\/goLang\/pokemonCppServer\/src\/simulator\/tests\/battle_data_test.cpp",
+          "line": 2990
+        },
+        {
+          "name": "SafeguardPsychUpHealBellAndAromatherapyApplyExpectedEffects",
+          "file": "\/Users\/why\/Documents\/goLang\/pokemonCppServer\/src\/simulator\/tests\/battle_data_test.cpp",
+          "line": 3083
+        },
+        {
+          "name": "YawnTauntAndTormentControlMoveFlow",
+          "file": "\/Users\/why\/Documents\/goLang\/pokemonCppServer\/src\/simulator\/tests\/battle_data_test.cpp",
+          "line": 3133
+        },
+        {
+          "name": "TauntExpiresAndAllowsStatusMovesAgain",
+          "file": "\/Users\/why\/Documents\/goLang\/pokemonCppServer\/src\/simulator\/tests\/battle_data_test.cpp",
+          "line": 3179
+        },
+        {
+          "name": "TormentExpiresAndAllowsRepeatedMoveAgain",
+          "file": "\/Users\/why\/Documents\/goLang\/pokemonCppServer\/src\/simulator\/tests\/battle_data_test.cpp",
+          "line": 3217
+        },
+        {
+          "name": "DisableExpiresAndAllowsDisabledMoveAgain",
+          "file": "\/Users\/why\/Documents\/goLang\/pokemonCppServer\/src\/simulator\/tests\/battle_data_test.cpp",
+          "line": 3262
+        },
+        {
+          "name": "RefreshCamouflageAndImprisonApplyExpectedEffects",
+          "file": "\/Users\/why\/Documents\/goLang\/pokemonCppServer\/src\/simulator\/tests\/battle_data_test.cpp",
+          "line": 3307
+        },
+        {
+          "name": "WishAndConversionApplyExpectedEffects",
+          "file": "\/Users\/why\/Documents\/goLang\/pokemonCppServer\/src\/simulator\/tests\/battle_data_test.cpp",
+          "line": 3350
+        },
+        {
+          "name": "ShoreUpAndHealPulseApplyExpectedRecovery",
+          "file": "\/Users\/why\/Documents\/goLang\/pokemonCppServer\/src\/simulator\/tests\/battle_data_test.cpp",
+          "line": 3382
+        },
+        {
+          "name": "HealingWishAndLunarDanceRestoreNextSwitchInPokemon",
+          "file": "\/Users\/why\/Documents\/goLang\/pokemonCppServer\/src\/simulator\/tests\/battle_data_test.cpp",
+          "line": 3408
+        },
+        {
+          "name": "LifeDewAndLunarBlessingApplyExpectedRecovery",
+          "file": "\/Users\/why\/Documents\/goLang\/pokemonCppServer\/src\/simulator\/tests\/battle_data_test.cpp",
+          "line": 3474
+        },
+        {
+          "name": "HealBlockPreventsHealingMovesDuringDuration",
+          "file": "\/Users\/why\/Documents\/goLang\/pokemonCppServer\/src\/simulator\/tests\/battle_data_test.cpp",
+          "line": 3504
+        },
+        {
+          "name": "HealBlockBlocksWishAndLifeDewThenExpires",
+          "file": "\/Users\/why\/Documents\/goLang\/pokemonCppServer\/src\/simulator\/tests\/battle_data_test.cpp",
+          "line": 3552
+        },
+        {
+          "name": "HealBlockBlocksLunarBlessingThenExpires",
+          "file": "\/Users\/why\/Documents\/goLang\/pokemonCppServer\/src\/simulator\/tests\/battle_data_test.cpp",
+          "line": 3611
+        },
+        {
+          "name": "EmbargoBlocksItemUseUntilItExpires",
+          "file": "\/Users\/why\/Documents\/goLang\/pokemonCppServer\/src\/simulator\/tests\/battle_data_test.cpp",
+          "line": 3657
+        },
+        {
+          "name": "EndureLockOnAndSpiteApplyExpectedEffects",
+          "file": "\/Users\/why\/Documents\/goLang\/pokemonCppServer\/src\/simulator\/tests\/battle_data_test.cpp",
+          "line": 3698
+        },
+        {
+          "name": "RestSweetKissAndNightmareApplyExpectedEffects",
+          "file": "\/Users\/why\/Documents\/goLang\/pokemonCppServer\/src\/simulator\/tests\/battle_data_test.cpp",
+          "line": 3757
+        },
+        {
+          "name": "SpiderWebMeanLookAndBlockPreventTargetSwitch",
+          "file": "\/Users\/why\/Documents\/goLang\/pokemonCppServer\/src\/simulator\/tests\/battle_data_test.cpp",
+          "line": 3793
+        },
+        {
+          "name": "BellyDrumRoostIngrainPerishSongAndTeeterDanceApplyExpectedEffects",
+          "file": "\/Users\/why\/Documents\/goLang\/pokemonCppServer\/src\/simulator\/tests\/battle_data_test.cpp",
+          "line": 3826
+        },
+        {
+          "name": "AttractDestinyBondGrudgeCurseAndSleepTalkApplyExpectedEffects",
+          "file": "\/Users\/why\/Documents\/goLang\/pokemonCppServer\/src\/simulator\/tests\/battle_data_test.cpp",
+          "line": 3883
+        },
+        {
+          "name": "KnockOffRemovesItemAndGetsDamageBoostAgainstHeldItem",
+          "file": "\/Users\/why\/Documents\/goLang\/pokemonCppServer\/src\/simulator\/tests\/battle_data_test.cpp",
+          "line": 3991
+        },
+        {
+          "name": "WeatherBallChangesWithWeatherAndBoostsDamage",
+          "file": "\/Users\/why\/Documents\/goLang\/pokemonCppServer\/src\/simulator\/tests\/battle_data_test.cpp",
+          "line": 4021
+        },
+        {
+          "name": "DigNeedsChargeTurnAndSecondTurnDealsDamage",
+          "file": "\/Users\/why\/Documents\/goLang\/pokemonCppServer\/src\/simulator\/tests\/battle_data_test.cpp",
+          "line": 4048
+        },
+        {
+          "name": "EncoreForcesTargetToRepeatLastUsedMove",
+          "file": "\/Users\/why\/Documents\/goLang\/pokemonCppServer\/src\/simulator\/tests\/battle_data_test.cpp",
+          "line": 4082
+        },
+        {
+          "name": "RoundSecondUseInSameTurnHasHigherDamage",
+          "file": "\/Users\/why\/Documents\/goLang\/pokemonCppServer\/src\/simulator\/tests\/battle_data_test.cpp",
+          "line": 4120
+        },
+        {
+          "name": "RoundCountsAsUsedEvenWhenItMisses",
+          "file": "\/Users\/why\/Documents\/goLang\/pokemonCppServer\/src\/simulator\/tests\/battle_data_test.cpp",
+          "line": 4152
+        },
+        {
+          "name": "PopulationBombMatchesTenIndependentHitsAtFullAccuracy",
+          "file": "\/Users\/why\/Documents\/goLang\/pokemonCppServer\/src\/simulator\/tests\/battle_data_test.cpp",
+          "line": 4198
+        },
+        {
+          "name": "PopulationBombStopsAfterFirstMiss",
+          "file": "\/Users\/why\/Documents\/goLang\/pokemonCppServer\/src\/simulator\/tests\/battle_data_test.cpp",
+          "line": 4241
+        },
+        {
+          "name": "FlyChargeTurnIsSemiInvulnerableExceptForHurricane",
+          "file": "\/Users\/why\/Documents\/goLang\/pokemonCppServer\/src\/simulator\/tests\/battle_data_test.cpp",
+          "line": 4263
+        },
+        {
+          "name": "FixedTwoHitMoveMatchesTwoIndependentSingleHits",
+          "file": "\/Users\/why\/Documents\/goLang\/pokemonCppServer\/src\/simulator\/tests\/battle_data_test.cpp",
+          "line": 4297
+        },
+        {
+          "name": "DigAllowsEarthquakeToHitUndergroundTarget",
+          "file": "\/Users\/why\/Documents\/goLang\/pokemonCppServer\/src\/simulator\/tests\/battle_data_test.cpp",
+          "line": 4340
+        },
+        {
+          "name": "PursuitTriggersOnOpponentSwitch",
+          "file": "\/Users\/why\/Documents\/goLang\/pokemonCppServer\/src\/simulator\/tests\/battle_data_test.cpp",
+          "line": 4368
+        },
+        {
+          "name": "RecoveryMovesHealUserByHalfMaxHpAndCapAtMax",
+          "file": "\/Users\/why\/Documents\/goLang\/pokemonCppServer\/src\/simulator\/tests\/battle_data_test.cpp",
+          "line": 4397
+        },
+        {
+          "name": "HazeResetsBothActivePokemonStatStages",
+          "file": "\/Users\/why\/Documents\/goLang\/pokemonCppServer\/src\/simulator\/tests\/battle_data_test.cpp",
+          "line": 4430
+        },
+        {
+          "name": "ReflectAndLightScreenReduceMatchingDamage",
+          "file": "\/Users\/why\/Documents\/goLang\/pokemonCppServer\/src\/simulator\/tests\/battle_data_test.cpp",
+          "line": 4458
+        },
+        {
+          "name": "LeechSeedDrainsTargetAndHealsSourceOnFieldEffects",
+          "file": "\/Users\/why\/Documents\/goLang\/pokemonCppServer\/src\/simulator\/tests\/battle_data_test.cpp",
+          "line": 4497
+        },
+        {
+          "name": "SubstituteBlocksStatusMovesAndAbsorbsDamage",
+          "file": "\/Users\/why\/Documents\/goLang\/pokemonCppServer\/src\/simulator\/tests\/battle_data_test.cpp",
+          "line": 4525
+        },
+        {
+          "name": "SandAttackRaisesEvasionAndCausesLowAccuracyMoveToMiss",
+          "file": "\/Users\/why\/Documents\/goLang\/pokemonCppServer\/src\/simulator\/tests\/battle_data_test.cpp",
+          "line": 4562
+        },
+        {
+          "name": "GravityBoostsAccuracyForLowAccuracyMove",
+          "file": "\/Users\/why\/Documents\/goLang\/pokemonCppServer\/src\/simulator\/tests\/battle_data_test.cpp",
+          "line": 4593
+        },
+        {
+          "name": "TerrainMovesModifyDamageAndBlockStatusInMistyTerrain",
+          "file": "\/Users\/why\/Documents\/goLang\/pokemonCppServer\/src\/simulator\/tests\/battle_data_test.cpp",
+          "line": 4637
+        },
+        {
+          "name": "DetectProtectsUserFromOpponentAttack",
+          "file": "\/Users\/why\/Documents\/goLang\/pokemonCppServer\/src\/simulator\/tests\/battle_data_test.cpp",
+          "line": 4696
+        },
+        {
+          "name": "ProtectFamilyConsecutiveUseHasFailurePenalty",
+          "file": "\/Users\/why\/Documents\/goLang\/pokemonCppServer\/src\/simulator\/tests\/battle_data_test.cpp",
+          "line": 4722
+        },
+        {
+          "name": "ProtectVariantsApplyContactPunishments",
+          "file": "\/Users\/why\/Documents\/goLang\/pokemonCppServer\/src\/simulator\/tests\/battle_data_test.cpp",
+          "line": 4770
+        },
+        {
+          "name": "ProtectFamilySharesConsecutivePenaltyAcrossVariants",
+          "file": "\/Users\/why\/Documents\/goLang\/pokemonCppServer\/src\/simulator\/tests\/battle_data_test.cpp",
+          "line": 4848
+        },
+        {
+          "name": "QuickGuardBlocksPriorityMovesButNotNormalPriority",
+          "file": "\/Users\/why\/Documents\/goLang\/pokemonCppServer\/src\/simulator\/tests\/battle_data_test.cpp",
+          "line": 4898
+        },
+        {
+          "name": "WideGuardBlocksSpreadTargetMoves",
+          "file": "\/Users\/why\/Documents\/goLang\/pokemonCppServer\/src\/simulator\/tests\/battle_data_test.cpp",
+          "line": 4935
+        },
+        {
+          "name": "FlinchPreventsTargetFromMovingThatTurn",
+          "file": "\/Users\/why\/Documents\/goLang\/pokemonCppServer\/src\/simulator\/tests\/battle_data_test.cpp",
+          "line": 4960
+        },
+        {
+          "name": "WeatherSettingMovesApplyExpectedWeatherState",
+          "file": "\/Users\/why\/Documents\/goLang\/pokemonCppServer\/src\/simulator\/tests\/battle_data_test.cpp",
+          "line": 4991
+        },
+        {
+          "name": "EntryHazardsApplyOnSwitchIn",
+          "file": "\/Users\/why\/Documents\/goLang\/pokemonCppServer\/src\/simulator\/tests\/battle_data_test.cpp",
+          "line": 5027
+        },
+        {
+          "name": "DefogClearsBothSidesHazardsAndCourtChangeSwapsThem",
+          "file": "\/Users\/why\/Documents\/goLang\/pokemonCppServer\/src\/simulator\/tests\/battle_data_test.cpp",
+          "line": 5063
+        },
+        {
+          "name": "MudSportAndWaterSportReduceDamageAndExpireAfterFiveTurns",
+          "file": "\/Users\/why\/Documents\/goLang\/pokemonCppServer\/src\/simulator\/tests\/battle_data_test.cpp",
+          "line": 5134
+        },
+        {
+          "name": "SurgingStrikesMatchesThreeIndependentHits",
+          "file": "\/Users\/why\/Documents\/goLang\/pokemonCppServer\/src\/simulator\/tests\/battle_data_test.cpp",
+          "line": 5185
+        },
+        {
+          "name": "RestHealsUserToFullAndAppliesSleep",
+          "file": "\/Users\/why\/Documents\/goLang\/pokemonCppServer\/src\/simulator\/tests\/battle_data_test.cpp",
+          "line": 5272
+        },
+        {
+          "name": "SleepPreventsActionUntilItExpires",
+          "file": "\/Users\/why\/Documents\/goLang\/pokemonCppServer\/src\/simulator\/tests\/battle_data_test.cpp",
+          "line": 5296
+        },
+        {
+          "name": "JumpKickMissDealsCrashRecoilToUser",
+          "file": "\/Users\/why\/Documents\/goLang\/pokemonCppServer\/src\/simulator\/tests\/battle_data_test.cpp",
+          "line": 5326
+        },
+        {
+          "name": "CloseCombatLowersUsersAttackAndDefenseOnHit",
+          "file": "\/Users\/why\/Documents\/goLang\/pokemonCppServer\/src\/simulator\/tests\/battle_data_test.cpp",
+          "line": 5352
+        }
+      ]
+    },
+    {
+      "name": "BattleEventTest",
+      "tests": 1,
+      "testsuite": [
+        {
+          "name": "ActionHooksEmitBeforeAndAfterResolve",
+          "file": "\/Users\/why\/Documents\/goLang\/pokemonCppServer\/src\/simulator\/tests\/battle_data_test.cpp",
+          "line": 5230
+        }
+      ]
+    },
+    {
+      "name": "BattleSessionTest",
+      "tests": 7,
+      "testsuite": [
+        {
+          "name": "RejectsDuplicateActionFromSameSideInSingles",
+          "file": "\/Users\/why\/Documents\/goLang\/pokemonCppServer\/src\/simulator\/tests\/battle_data_test.cpp",
+          "line": 5378
+        },
+        {
+          "name": "RejectsAttackWithBothMoveIndexAndMoveName",
+          "file": "\/Users\/why\/Documents\/goLang\/pokemonCppServer\/src\/simulator\/tests\/battle_data_test.cpp",
+          "line": 5400
+        },
+        {
+          "name": "RejectsBenchActorForAttackInSinglesMode",
+          "file": "\/Users\/why\/Documents\/goLang\/pokemonCppServer\/src\/simulator\/tests\/battle_data_test.cpp",
+          "line": 5422
+        },
+        {
+          "name": "AcceptsTargetIndexAliasForSwitchAction",
+          "file": "\/Users\/why\/Documents\/goLang\/pokemonCppServer\/src\/simulator\/tests\/battle_data_test.cpp",
+          "line": 5447
+        },
+        {
+          "name": "SeededSessionsProduceIdenticalRngDependentResults",
+          "file": "\/Users\/why\/Documents\/goLang\/pokemonCppServer\/src\/simulator\/tests\/battle_data_test.cpp",
+          "line": 5479
+        },
+        {
+          "name": "TwoMovesThenSwitchUsesRealSpecies",
+          "file": "\/Users\/why\/Documents\/goLang\/pokemonCppServer\/src\/simulator\/tests\/battle_data_test.cpp",
+          "line": 5697
+        },
+        {
+          "name": "LoadSpeciesFromJsonThenBuildPokemon",
+          "file": "\/Users\/why\/Documents\/goLang\/pokemonCppServer\/src\/simulator\/tests\/battle_data_test.cpp",
+          "line": 5733
+        }
+      ]
+    },
+    {
+      "name": "BattleFlowIntegrationTest",
+      "tests": 2,
+      "testsuite": [
+        {
+          "name": "FullBattleFlowIncludesRequestedMechanicsAndOutputs",
+          "file": "\/Users\/why\/Documents\/goLang\/pokemonCppServer\/src\/simulator\/tests\/battle_data_test.cpp",
+          "line": 5516
+        },
+        {
+          "name": "ThreeVThreeTwoMovesThenSwitchSimulation",
+          "file": "\/Users\/why\/Documents\/goLang\/pokemonCppServer\/src\/simulator\/tests\/battle_data_test.cpp",
+          "line": 5758
+        }
+      ]
+    }
+  ]
+}

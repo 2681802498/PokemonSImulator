@@ -1,0 +1,1 @@
+/usr/bin/c++  -arch arm64 -Wl,-search_paths_first -Wl,-headerpad_max_install_names CMakeFiles/PokemonSimulatorTests.dir/tests/battle_data_test.cpp.o -o PokemonSimulatorTests  libbattle_core.a lib/libgtest_main.a /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/lib/libcurl.tbd lib/libgtest.a
