@@ -30,6 +30,9 @@ public:
 private:
     std::vector<std::unique_ptr<Pokemon>> storage;
     std::unique_ptr<Battle> battle;
+    std::optional<BattleAction> pendingActionA;
+    std::optional<BattleAction> pendingActionB;
+    int lastProcessedTurn = -1;
 
     static ItemType parseItemType(const std::string& value);
     static Pokemon* selectActor(Side& side, const nlohmann::json& actionJson);

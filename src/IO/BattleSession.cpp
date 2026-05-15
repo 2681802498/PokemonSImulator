@@ -351,6 +351,15 @@ nlohmann::json BattleSession::processTurn(const nlohmann::json& turnRequest) {
     if (!turnRequest.is_object()) {
         return nlohmann::json{{"ok", false}, {"error", "turn request must be an object"}};
     }
+    
+    // Check if we're entering a new turn - if so, clear previous pending actions
+    const int currentTurn = battle->getTurnNumber();
+    if (currentTurn != lastProcessedTurn) {
+        pendingActionA.reset();
+        pendingActionB.reset();
+        lastProcessedTurn = currentTurn;
+    }
+    
     const int nextTurn = battle->getTurnNumber() + 1;
     nlohmann::json sideAInput;
     nlohmann::json sideBInput;
@@ -369,6 +378,12 @@ nlohmann::json BattleSession::processTurn(const nlohmann::json& turnRequest) {
     bool hasA = false;
     bool hasB = false;
     std::vector<std::string> errors;
+    struct ParsedAction {
+        bool isA = false;
+        BattleAction action;
+    };
+    std::vector<ParsedAction> parsedActions;
+    parsedActions.reserve(actions.size());
 
     for (const auto& actionJson : actions) {
         if (!actionJson.is_object()) {
@@ -560,7 +575,7 @@ nlohmann::json BattleSession::processTurn(const nlohmann::json& turnRequest) {
             continue;
         }
 
-        battle->enqueueAction(action);
+        parsedActions.push_back(ParsedAction{isA, std::move(action)});
         if (isA) {
             hasA = true;
         } else {
@@ -578,6 +593,36 @@ nlohmann::json BattleSession::processTurn(const nlohmann::json& turnRequest) {
     if (!errors.empty()) {
         return nlohmann::json{{"ok", false}, {"errors", errors}};
     }
+
+    // Store parsed actions to pending
+    for (const auto& parsed : parsedActions) {
+        if (parsed.isA) {
+            if (pendingActionA.has_value()) {
+                return nlohmann::json{{"ok", false}, {"error", "side a has already submitted an action for this turn"}};
+            }
+            pendingActionA = parsed.action;
+        } else {
+            if (pendingActionB.has_value()) {
+                return nlohmann::json{{"ok", false}, {"error", "side b has already submitted an action for this turn"}};
+            }
+            pendingActionB = parsed.action;
+        }
+    }
+
+    // Check if both sides have submitted - if not, return waiting state
+    if (!pendingActionA.has_value() || !pendingActionB.has_value()) {
+        nlohmann::json waitingState = BattleToJson::battleAllInfoToJson(*battle);
+        waitingState["ok"] = true;
+        waitingState["waiting"] = true;
+        waitingState["pending_side"] = pendingActionA.has_value() ? "b" : "a";
+        return waitingState;
+    }
+
+    // Both sides ready - execute the turn
+    battle->enqueueAction(*pendingActionA);
+    battle->enqueueAction(*pendingActionB);
+    pendingActionA.reset();
+    pendingActionB.reset();
 
     battle->processTurn();
     const nlohmann::json battleAllInfo = BattleToJson::battleAllInfoToJson(*battle);
