@@ -217,25 +217,12 @@ json buildIndexedTimeline(Battle& battle) {
 }
 
 json sideAllInfoToJson(const Side& side, int sideIndex) {
-    json sideJson;
-    sideJson["side"] = sideIndex;
-    sideJson["name"] = side.getName();
+    nlohmann::ordered_json sideJson;
     sideJson["active"] = side.getActiveIndex();
     sideJson["count"] = side.getPokemonCount();
+    sideJson["name"] = side.getName();
 
-    sideJson["sideEffects"] = json{
-        {"reflect", side.getReflectTurns()},
-        {"lightScreen", side.getLightScreenTurns()},
-        {"mist", side.getMistTurns()},
-        {"safeguard", side.getSafeguardTurns()},
-        {"mudSport", side.getMudSportTurns()},
-        {"waterSport", side.getWaterSportTurns()},
-        {"spikes", side.getSpikesLayers()},
-        {"toxicSpikes", side.getToxicSpikesLayers()},
-        {"stealthRock", side.hasStealthRock()}
-    };
-
-    json team = json::array();
+    nlohmann::ordered_json team = nlohmann::ordered_json::array();
     const auto& all = side.getTeam();
     for (int i = 0; i < side.getPokemonCount(); ++i) {
         const Pokemon* pokemon = all[i];
@@ -243,48 +230,64 @@ json sideAllInfoToJson(const Side& side, int sideIndex) {
             continue;
         }
 
-        json one;
+        nlohmann::ordered_json one;
+        one["abilityId"] = getAbilityData(pokemon->getAbility()).id;
+        one["fainted"] = pokemon->isFainted();
+        one["hp"] = pokemon->getCurrentHP();
+        
+        nlohmann::ordered_json statuses = nlohmann::ordered_json::array();
+        for (const auto& statusEntry : pokemon->getStatuses()) {
+            nlohmann::ordered_json statusJson;
+            statusJson["id"] = static_cast<int>(statusEntry.first);
+            statusJson["duration"] = statusEntry.second;
+            statuses.emplace_back(std::move(statusJson));
+        }
+        one["inBattleStatus"] = statuses;
+        
+        one["itemId"] = itemTypeToDataId(pokemon->getItemType());
+        one["maxHp"] = pokemon->getMaxHP();
+        
+        nlohmann::ordered_json moves = nlohmann::ordered_json::array();
+        const auto& moveList = pokemon->getMoves();
+        for (std::size_t moveSlot = 0; moveSlot < moveList.size(); ++moveSlot) {
+            const Move& move = moveList[moveSlot];
+            nlohmann::ordered_json moveJson;
+            moveJson["id"] = move.getData().id;
+            moveJson["maxPp"] = move.getMaxPP();
+            moveJson["pp"] = move.getPP();
+            moveJson["slot"] = static_cast<int>(moveSlot);
+            moves.push_back(std::move(moveJson));
+        }
+        one["moves"] = moves;
+        
         one["slot"] = i;
         one["speciesId"] = pokemon->getSpecies().id;
-        one["hp"] = pokemon->getCurrentHP();
-        one["maxHp"] = pokemon->getMaxHP();
-        one["fainted"] = pokemon->isFainted();
-        one["abilityId"] = getAbilityData(pokemon->getAbility()).id;
-        one["itemId"] = itemTypeToDataId(pokemon->getItemType());
-        one["types"] = json::array({static_cast<int>(pokemon->getType1()), static_cast<int>(pokemon->getType2())});
-        one["statStages"] = json::array({
+        one["statStages"] = nlohmann::ordered_json::array({
             pokemon->getStatStage(StatIndex::Attack),
             pokemon->getStatStage(StatIndex::Defense),
             pokemon->getStatStage(StatIndex::SpecialAttack),
             pokemon->getStatStage(StatIndex::SpecialDefense),
-            pokemon->getStatStage(StatIndex::Speed)
+            pokemon->getStatStage(StatIndex::Speed),
+            0,
+            0
         });
-
-        json statuses = json::array();
-        for (const auto& statusEntry : pokemon->getStatuses()) {
-            statuses.push_back(json{
-                {"id", static_cast<int>(statusEntry.first)},
-                {"duration", statusEntry.second}
-            });
-        }
-        one["inBattleStatus"] = statuses;
-
-        json moves = json::array();
-        const auto& moveList = pokemon->getMoves();
-        for (std::size_t moveSlot = 0; moveSlot < moveList.size(); ++moveSlot) {
-            const Move& move = moveList[moveSlot];
-            moves.push_back(json{
-                {"slot", static_cast<int>(moveSlot)},
-                {"id", move.getData().id},
-                {"pp", move.getPP()},
-                {"maxPp", move.getMaxPP()}
-            });
-        }
-        one["moves"] = moves;
+        one["types"] = nlohmann::ordered_json::array({static_cast<int>(pokemon->getType1()), static_cast<int>(pokemon->getType2())});
         team.push_back(std::move(one));
     }
-
     sideJson["pokemons"] = team;
+    
+    sideJson["side"] = sideIndex;
+    sideJson["sideEffects"] = nlohmann::ordered_json{
+        {"lightScreen", side.getLightScreenTurns()},
+        {"mist", side.getMistTurns()},
+        {"mudSport", side.getMudSportTurns()},
+        {"reflect", side.getReflectTurns()},
+        {"safeguard", side.getSafeguardTurns()},
+        {"spikes", side.getSpikesLayers()},
+        {"stealthRock", side.hasStealthRock()},
+        {"toxicSpikes", side.getToxicSpikesLayers()},
+        {"waterSport", side.getWaterSportTurns()}
+    };
     return sideJson;
 }
 
@@ -604,33 +607,28 @@ json BattleToJson::sideToJson(const Side& side) {
 
 json BattleToJson::battleAllInfoToJson(Battle& battle) {
     json timeline = buildIndexedTimeline(battle);
-    json descriptions = json::array();
+    nlohmann::ordered_json descriptions = nlohmann::ordered_json::array();
     for (const auto& entry : timeline) {
         if (entry.contains("description") && entry["description"].is_string()) {
-            descriptions.push_back(entry["description"]);
+            descriptions.emplace_back(entry["description"].get<std::string>());
         }
     }
 
-    json battleState;
-    battleState["turn"] = battle.getTurnNumber();
-    battleState["sides"] = json::array({
-        sideAllInfoToJson(battle.getSideA(), 0),
-        sideAllInfoToJson(battle.getSideB(), 1),
-    });
-    battleState["field"] = json{
-        {"type", static_cast<int>(battle.getField().type)},
-        {"duration", battle.getField().duration}
+    nlohmann::ordered_json battleState;
+    battleState["field"] = nlohmann::ordered_json{
+        {"duration", battle.getField().duration},
+        {"type", static_cast<int>(battle.getField().type)}
     };
-    battleState["weather"] = json{
-        {"type", static_cast<int>(battle.getWeather().type)},
-        {"duration", battle.getWeather().duration}
-    };
+    
+    nlohmann::ordered_json sides = nlohmann::ordered_json::array();
+    sides.emplace_back(sideAllInfoToJson(battle.getSideA(), 0));
+    sides.emplace_back(sideAllInfoToJson(battle.getSideB(), 1));
+    battleState["sides"] = sides;
 
-    json allInfo;
+    nlohmann::ordered_json allInfo;
+    allInfo["descriptions"] = descriptions;
     allInfo["turn"] = battle.getTurnNumber();
     allInfo["battle"] = std::move(battleState);
-    allInfo["events"] = timeline;
-    allInfo["descriptions"] = descriptions;
     return allInfo;
 }
 
@@ -659,6 +657,11 @@ json BattleToJson::battleToJson(Battle& battle) {
 
 // 将Json数据写入到cache文件中
 void BattleToJson::writeToCache(const json& data, const std::string& filename) {
+#ifdef BATTLE_SIMULATOR_DISABLE_CACHE_IO
+    (void)data;
+    (void)filename;
+    return;
+#else
     if (filename.rfind("output_", 0) != 0) {
         return;
     }
@@ -695,4 +698,5 @@ void BattleToJson::writeToCache(const json& data, const std::string& filename) {
     // 写入Json数据
     file << orderedData.dump(2);
     file.close();
+#endif
 }

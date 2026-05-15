@@ -515,34 +515,7 @@ Battle::Battle(Side sideA, Side sideB, const GameRegistry& reg, bool autoSendOut
     battleContext.setBattlePointer(this);
 
     if (autoSendOut) {
-        Pokemon* activeA = this->sideA.getActivePokemon();
-        Pokemon* activeB = this->sideB.getActivePokemon();
-
-        if (activeA) {
-            recordSpecialEvent(*this, "switch_in", {
-                {"side", this->sideA.getName()},
-                {"pokemon", activeA->getName()},
-                {"reason", "initial_send_out"}
-            });
-        }
-        if (activeB) {
-            recordSpecialEvent(*this, "switch_in", {
-                {"side", this->sideB.getName()},
-                {"pokemon", activeB->getName()},
-                {"reason", "initial_send_out"}
-            });
-        }
-
-        if (activeA) {
-            triggerAbility(activeA, Trigger::OnEntry, activeB);
-            triggerItemEffect(activeA, ItemTrigger::OnEntry, activeB);
-        }
-
-        if (activeB) {
-            triggerAbility(activeB, Trigger::OnEntry, activeA);
-            triggerItemEffect(activeB, ItemTrigger::OnEntry, activeA);
-        }
-
+        performInitialSendOut();
         BattleToJson::writeToCache(BattleToJson::battleAllInfoToJson(*this), "output_0.json");
     }
 }
@@ -1315,6 +1288,41 @@ void Battle::appendSpecialEvent(const std::string& eventType, const nlohmann::js
     event["event"] = eventType;
     event["details"] = details;
     specialEvents.push_back(std::move(event));
+}
+
+void Battle::performInitialSendOut() {
+    if (initialSendOutCompleted) {
+        return;
+    }
+    initialSendOutCompleted = true;
+
+    Pokemon* activeA = this->sideA.getActivePokemon();
+    Pokemon* activeB = this->sideB.getActivePokemon();
+
+    if (activeA) {
+        recordSpecialEvent(*this, "switch_in", {
+            {"side", this->sideA.getName()},
+            {"pokemon", activeA->getName()},
+            {"reason", "initial_send_out"}
+        });
+    }
+    if (activeB) {
+        recordSpecialEvent(*this, "switch_in", {
+            {"side", this->sideB.getName()},
+            {"pokemon", activeB->getName()},
+            {"reason", "initial_send_out"}
+        });
+    }
+
+    if (activeA) {
+        triggerAbility(activeA, Trigger::OnEntry, activeB);
+        triggerItemEffect(activeA, ItemTrigger::OnEntry, activeB);
+    }
+
+    if (activeB) {
+        triggerAbility(activeB, Trigger::OnEntry, activeA);
+        triggerItemEffect(activeB, ItemTrigger::OnEntry, activeA);
+    }
 }
 
 void Battle::enqueueAction(const BattleAction& action) {

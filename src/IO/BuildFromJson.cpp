@@ -193,6 +193,20 @@ EggGroup stringToEggGroup(const std::string& eggGroupStr) {
     return EggGroup::Monster; // 默认值
 }
 
+// 兼容不同字段名读取种族 ID
+int parseSpeciesId(const json& jsonData) {
+    if (jsonData.contains("speciesID") && jsonData["speciesID"].is_number_integer()) {
+        return jsonData["speciesID"].get<int>();
+    }
+    if (jsonData.contains("species_id") && jsonData["species_id"].is_number_integer()) {
+        return jsonData["species_id"].get<int>();
+    }
+    if (jsonData.contains("speciesId") && jsonData["speciesId"].is_number_integer()) {
+        return jsonData["speciesId"].get<int>();
+    }
+    return 0;
+}
+
 // 从Json创建Species对象
 Species BuildFromJson::buildSpecies(const json& jsonData) {
     Species species;
@@ -350,7 +364,14 @@ std::map<int, Species> loadSpeciesFromFile() {
     file >> jsonData;
     file.close();
     
-    if (jsonData.contains("species")) {
+    if (jsonData.is_array()) {
+        // 直接数组格式
+        for (const auto& speciesData : jsonData) {
+            Species species = BuildFromJson::buildSpecies(speciesData);
+            speciesMap[species.id] = species;
+        }
+    } else if (jsonData.contains("species") && jsonData["species"].is_array()) {
+        // {"species": [...]} 格式
         for (const auto& speciesData : jsonData["species"]) {
             Species species = BuildFromJson::buildSpecies(speciesData);
             speciesMap[species.id] = species;
@@ -392,7 +413,12 @@ std::map<int, Ability> loadAbilitiesFromFile() {
     file >> jsonData;
     file.close();
     
-    if (jsonData.contains("abilities")) {
+    if (jsonData.is_array()) {
+        for (const auto& abilityData : jsonData) {
+            int id = abilityData.value("id", 0);
+            abilityMap[id] = getAbility(getAbilityTypeById(id));
+        }
+    } else if (jsonData.contains("abilities") && jsonData["abilities"].is_array()) {
         for (const auto& abilityData : jsonData["abilities"]) {
             int id = abilityData.value("id", 0);
             abilityMap[id] = getAbility(getAbilityTypeById(id));
@@ -434,7 +460,25 @@ std::map<int, Item> loadItemsFromFile() {
     file >> jsonData;
     file.close();
     
-    if (jsonData.contains("items")) {
+    if (jsonData.is_array()) {
+        for (const auto& itemData : jsonData) {
+            int id = itemData.value("id", 0);
+            std::string name = itemData.value("name", "");
+            std::string description = itemData.value("description", "");
+            
+            Item item;
+            switch (id) {
+                case 1:
+                    item = getItem(ItemType::None);
+                    break;
+                default:
+                    item = getItem(ItemType::None);
+                    break;
+            }
+            
+            itemMap[id] = item;
+        }
+    } else if (jsonData.contains("items") && jsonData["items"].is_array()) {
         for (const auto& itemData : jsonData["items"]) {
             int id = itemData.value("id", 0);
             std::string name = itemData.value("name", "");
@@ -490,7 +534,25 @@ std::map<int, Move> loadMovesFromFile() {
     file >> jsonData;
     file.close();
     
-    if (jsonData.contains("moves") && jsonData["moves"].is_array()) {
+    if (jsonData.is_array()) {
+        for (const auto& moveData : jsonData) {
+            Move move = createMoveByName("Tackle");
+            int id = moveData.value("id", 0);
+
+            if (id > 0) {
+                move = createMoveById(id);
+            } else if (moveData.contains("apiName") && moveData["apiName"].is_string()) {
+                move = createMoveByName(moveData["apiName"].get<std::string>());
+            } else if (moveData.contains("name") && moveData["name"].is_string()) {
+                move = createMoveByName(moveData["name"].get<std::string>());
+            }
+
+            const int moveId = move.getData().id > 0 ? move.getData().id : id;
+            if (moveId > 0) {
+                moveMap[moveId] = move;
+            }
+        }
+    } else if (jsonData.contains("moves") && jsonData["moves"].is_array()) {
         for (const auto& moveData : jsonData["moves"]) {
             Move move = createMoveByName("Tackle");
             int id = moveData.value("id", 0);
@@ -554,13 +616,14 @@ Pokemon BuildFromJson::loadPokemonFromFile(const std::string& filePath) {
         std::map<int, Species> speciesMap = loadSpeciesFromFile();
 
         // 从宝可梦数据中获取speciesID
-        int speciesID = jsonData.value("speciesID", 0);
+        int speciesID = parseSpeciesId(jsonData);
 
         // 查找对应的种族
         if (speciesMap.find(speciesID) != speciesMap.end()) {
             species = speciesMap[speciesID];
         } else {
-            std::cerr << "Error: Species with ID " << speciesID << " not found" << std::endl;
+            std::cerr << "Error: Species with ID " << speciesID << " not found in species.json" << std::endl;
+            std::cerr << "Input pokemon json: " << jsonData.dump() << std::endl;
             // 使用默认的种族
         }
     }
@@ -624,13 +687,14 @@ Pokemon BuildFromJson::loadPokemonFromString(const std::string& jsonString) {
         std::map<int, Species> speciesMap = loadSpeciesFromFile();
 
         // 从宝可梦数据中获取speciesID
-        int speciesID = jsonData.value("speciesID", 0);
+        int speciesID = parseSpeciesId(jsonData);
 
         // 查找对应的种族
         if (speciesMap.find(speciesID) != speciesMap.end()) {
             species = speciesMap[speciesID];
         } else {
-            std::cerr << "Error: Species with ID " << speciesID << " not found" << std::endl;
+            std::cerr << "Error: Species with ID " << speciesID << " not found in species.json" << std::endl;
+            std::cerr << "Input pokemon json: " << jsonData.dump() << std::endl;
             // 使用默认的种族
         }
     }

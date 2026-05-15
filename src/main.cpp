@@ -252,7 +252,8 @@ bool runDaemonMode() {
     processTurn0Switch(battle->getSideA(), sideAInput0, "side A");
     processTurn0Switch(battle->getSideB(), sideBInput0, "side B");
 
-    session->doInitialSendOut();
+    battle->performInitialSendOut();
+    BattleToJson::writeToCache(BattleToJson::battleAllInfoToJson(*battle), "output_0.json");
     std::cout << "[daemon] turn 0 done, output_0.json written" << std::endl;
 
     // Phase C: main turn loop

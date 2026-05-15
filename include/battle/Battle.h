@@ -115,6 +115,7 @@ public:
     const std::vector<nlohmann::json>& getSpecialEvents() const;
     void clearSpecialEvents();
     void appendSpecialEvent(const std::string& eventType, const nlohmann::json& details);
+    void performInitialSendOut();
 
     void enqueueAction(const BattleAction& action);
     void processTurn();
@@ -214,6 +215,7 @@ private:
     EventSystem eventSystem;
     std::vector<nlohmann::json> specialEvents;
     int turnNumber = 0;
+    bool initialSendOutCompleted = false;
     RuntimeMoveState runtimeMoveState;
     BattleContext battleContext;
 };

@@ -45,19 +45,29 @@ bool parseSideToken(const std::string& side, bool& isA) {
 }
 
 void writeInputCache(const nlohmann::json& data, const std::string& filename) {
+#ifdef BATTLE_SIMULATOR_DISABLE_CACHE_IO
+    (void)data;
+    (void)filename;
+    return;
+#else
     std::filesystem::create_directories("cache/input");
     std::ofstream output("cache/input/" + filename);
     if (!output.is_open()) {
         return;
     }
     output << data.dump(2);
+#endif
 }
 
 void resetCacheFolders() {
+#ifdef BATTLE_SIMULATOR_DISABLE_CACHE_IO
+    return;
+#else
     std::filesystem::remove_all("cache/input");
     std::filesystem::remove_all("cache/output");
     std::filesystem::create_directories("cache/input");
     std::filesystem::create_directories("cache/output");
+#endif
 }
 
 nlohmann::json collectActions(const nlohmann::json& turnRequest);
@@ -301,39 +311,6 @@ std::optional<BattleSession> BattleSession::createDeferred(const nlohmann::json&
     session.battle = std::make_unique<Battle>(std::move(sideA), std::move(sideB),
                                               GameRegistry::instance(), false);
     return session;
-}
-
-void BattleSession::doInitialSendOut() {
-    if (!battle) return;
-
-    Pokemon* activeA = battle->getSideA().getActivePokemon();
-    Pokemon* activeB = battle->getSideB().getActivePokemon();
-
-    if (activeA) {
-        battle->appendSpecialEvent("switch_in", {
-            {"side", battle->getSideA().getName()},
-            {"pokemon", activeA->getName()},
-            {"reason", "initial_send_out"}
-        });
-    }
-    if (activeB) {
-        battle->appendSpecialEvent("switch_in", {
-            {"side", battle->getSideB().getName()},
-            {"pokemon", activeB->getName()},
-            {"reason", "initial_send_out"}
-        });
-    }
-
-    if (activeA) {
-        battle->triggerAbility(activeA, Trigger::OnEntry, activeB);
-        battle->triggerItemEffect(activeA, ItemTrigger::OnEntry, activeB);
-    }
-    if (activeB) {
-        battle->triggerAbility(activeB, Trigger::OnEntry, activeA);
-        battle->triggerItemEffect(activeB, ItemTrigger::OnEntry, activeA);
-    }
-
-    BattleToJson::writeToCache(BattleToJson::battleAllInfoToJson(*battle), "output_0.json");
 }
 
 Pokemon* BattleSession::selectActor(Side& side, const nlohmann::json& actionJson) {
@@ -606,11 +583,5 @@ nlohmann::json BattleSession::processTurn(const nlohmann::json& turnRequest) {
     const nlohmann::json battleAllInfo = BattleToJson::battleAllInfoToJson(*battle);
     BattleToJson::writeToCache(battleAllInfo, "output_" + std::to_string(battle->getTurnNumber()) + ".json");
 
-    nlohmann::json response;
-    response["ok"] = true;
-    response["state"] = BattleToJson::battleToJson(*battle);
-    response["battle_all_info"] = battleAllInfo;
-    response["description"] = battleAllInfo.value("descriptions", nlohmann::json::array());
-    response["battle"] = battleAllInfo.value("battle", nlohmann::json::object());
-    return response;
+    return battleAllInfo;
 }

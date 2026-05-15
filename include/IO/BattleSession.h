@@ -21,8 +21,6 @@ public:
     static std::optional<BattleSession> createDeferred(const nlohmann::json& initRequest,
                                                         std::string* error = nullptr);
 
-    void doInitialSendOut();
-
     nlohmann::json processTurn(const nlohmann::json& turnRequest);
     Battle* getBattle() { return battle.get(); }
     const Battle* getBattle() const { return battle.get(); }
